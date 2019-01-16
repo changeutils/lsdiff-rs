@@ -29,7 +29,10 @@ fn main() -> Result<(), Error> {
     let patch = fs::read_to_string(patch).map_err(Error::Reading)?;
 
     for entry in lsdiff_rs::process(&patch).map_err(Error::Parsing)? {
-        println!("{}", entry.file_path);
+        println!(
+            "{} -> {} ({}, {})",
+            entry.input_path, entry.output_path, entry.start_line, entry.lines_count
+        );
     }
 
     Ok(())
