@@ -1,5 +1,5 @@
 //!
-//! The `lsdiff` library.
+//! The Lsdiff library.
 //!
 
 use failure::Fail;
