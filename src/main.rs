@@ -25,7 +25,7 @@ fn main() -> Result<(), Error> {
         )
         .get_matches();
 
-    let patch = args.value_of("patch").unwrap();
+    let patch = args.value_of("patch").expect("Unreachable");
     let patch = fs::read_to_string(patch).map_err(Error::Reading)?;
 
     for entry in lsdiff_rs::process(&patch).map_err(Error::Lsdiff)? {
